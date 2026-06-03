@@ -23,11 +23,13 @@ plugins declares dans `lua/plugins/`.
 
 ## Organisation
 
-- `init.lua`: bootstrap de `lazy.nvim` et import des modules.
-- `lua/settings.lua`: options globales, keymaps de base et autocmds.
+- `init.lua`: point d'entree minimal.
+- `lua/config/settings.lua`: options globales, keymaps de base et autocmds.
+- `lua/config/lazy.lua`: bootstrap de `lazy.nvim` et import des plugins.
 - `lua/plugins/editor.lua`: theme, navigation fichiers, Telescope, Git signs.
 - `lua/plugins/cmp.lua`: completion et snippets.
 - `lua/plugins/lsp.lua`: Mason et configuration LSP.
+- `lua/plugins/treesitter.lua`: parsing et coloration syntaxique avancee.
 - `lua/utils/`: petits helpers partages.
 
 ## Maintenance

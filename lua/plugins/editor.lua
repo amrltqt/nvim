@@ -2,10 +2,27 @@ return {
   'NMAC427/guess-indent.nvim',
 
   {
-    'shaunsingh/nord.nvim',
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'nord'
+      local function is_system_dark()
+        if vim.fn.has 'mac' ~= 1 then
+          return vim.o.background == 'dark'
+        end
+
+        local style = vim.fn.system { 'defaults', 'read', '-g', 'AppleInterfaceStyle' }
+        return vim.v.shell_error == 0 and style:match 'Dark' ~= nil
+      end
+
+      local flavor = is_system_dark() and 'mocha' or 'latte'
+
+      require('catppuccin').setup {
+        flavour = flavor,
+      }
+
+      vim.o.background = flavor == 'latte' and 'light' or 'dark'
+      vim.cmd.colorscheme 'catppuccin'
     end,
   },
 
